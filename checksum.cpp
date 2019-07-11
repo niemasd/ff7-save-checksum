@@ -4,10 +4,12 @@
 #include <iostream>
 using namespace std;
 
+// define constants
 const long FF7_SAVE_GAME_SIZE = 0xFE55;
 const long FF7_SAVE_GAME_FIRST_CHECKSUM = 0x09;
 const long FF7_SAVE_GAME_SLOT_SIZE = 0x10F4;
 
+// compute checksum
 int ff7_checksum( void* qw )
 {
    int i = 0, t, d;
@@ -29,6 +31,7 @@ int ff7_checksum( void* qw )
    return (r^0xFFFF)&0xFFFF;
 }
 
+// fix the checksums of a given file
 int ff7_writechecksums(char *file_name_read, char *file_name_write)
 {
     FILE * file;
@@ -99,7 +102,7 @@ int main(int argc, char *argv[])
           return_value = ff7_writechecksums(argv[1], argv[2]);
     }else
     {
-       cerr << "Not enough parameters." << endl << "Usage: checksum.exe srcfile.ff7 dstfile.ff7" << endl;
+       cerr << "Not enough parameters." << endl << "Usage: " << argv[0] << " <input_save_file>.ff7 <ouput_save_file>.ff7" << endl;
     }
     if(!return_value)
     {
