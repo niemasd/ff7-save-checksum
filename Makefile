@@ -14,7 +14,7 @@ endif
 all: $(TOOLS)
 
 # compile checksum tool
-numlist: checksum.cpp
+checksum: checksum.cpp
 	$(CXX) $(CXXFLAGS) -o $(CHECKSUMEXE) checksum.cpp
 
 # remove all compiled files
