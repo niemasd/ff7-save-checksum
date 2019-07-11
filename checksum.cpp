@@ -1,9 +1,7 @@
 /* Written by dziugo (http://forums.qhimm.com/index.php?topic=4211.msg60545#msg60545)
  * Modified by Niema Moshiri
  */
-#include <stdio.h>
-#include <stdlib.h>
-
+#include <iostream>
 using namespace std;
 
 const long FF7_SAVE_GAME_SIZE = 0xFE55;
@@ -50,7 +48,7 @@ int ff7_writechecksums(char *file_name_read, char *file_name_write)
              data = (void*) malloc(file_size);
              if(!data)
              {
-                printf("Memory allocation problem.\0");
+                cerr << "Memory allocation problem." << endl;
                 return 0;
              }
              fread(data, 1, file_size, file);
@@ -78,13 +76,13 @@ int ff7_writechecksums(char *file_name_read, char *file_name_write)
                 return 1;
              }else
              {
-                printf("Couldn't open dest-file: %s", file_name_write);
+                cerr << "Couldn't open dest-file: " << file_name_write << endl;
              }
              free(data);
           }
        }else
        {
-          printf("Couldn't open source-file: %s", file_name_read);
+          cerr << "Couldn't open source-file: " << file_name_read << endl;
        }
     }
     return 0;
@@ -101,11 +99,11 @@ int main(int argc, char *argv[])
           return_value = ff7_writechecksums(argv[1], argv[2]);
     }else
     {
-       printf("Not enough parameters.\nUsage: checksum.exe srcfile.ff7 dstfile.ff7\n\n\0");
+       cerr << "Not enough parameters." << endl << "Usage: checksum.exe srcfile.ff7 dstfile.ff7" << endl;
     }
     if(!return_value)
     {
-       printf("There were some errors.\0");
+       cerr << "There were some errors." << endl;
     }
    return EXIT_SUCCESS;
 }

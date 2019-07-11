@@ -1,3 +1,10 @@
+# binary files
+checksum
+checksum.exe
+
+# FF7 save files
+*.ff7
+
 # Prerequisites
 *.d
 
