@@ -1,3 +1,6 @@
+/* Written by dziugo (http://forums.qhimm.com/index.php?topic=4211.msg60545#msg60545)
+ * Modified by Niema Moshiri
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
